@@ -5,9 +5,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build
-        run: clang++ -dynamiclib -arch arm64 modff.cpp -o modff.dylib
+      - name: Compile
+        run: clang++ -dynamiclib -arch arm64 modff.cpp -o modff.dylib -stdlib=libc++
       - uses: actions/upload-artifact@v3
         with:
-          name: Mod-FF-OB53
+          name: Mod-Hien-Vip
           path: modff.dylib
