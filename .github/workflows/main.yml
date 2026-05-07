@@ -4,13 +4,10 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Build Dylib
-        run: |
-          xcrun -sdk iphoneos clang++ -dynamiclib -arch arm64 modff.cpp -o modff.dylib -miphoneos-version-min=14.0
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - uses: actions/checkout@v3
+      - name: Build
+        run: make
+      - uses: actions/upload-artifact@v3
         with:
           name: Hang-Vip-OB53
           path: modff.dylib
