@@ -1,0 +1,13 @@
+name: Build-Dylib
+on: [push]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: clang++ -dynamiclib -arch arm64 -isysroot $(xcrun --sdk iphoneos --show-sdk-path) modff.cpp -o modff.dylib
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Mod-FF-OB53
+          path: modff.dylib
